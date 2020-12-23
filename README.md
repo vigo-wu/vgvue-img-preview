@@ -81,17 +81,3 @@ this.$vgvueImgPreview({
 
 \*如不考虑兼容性问题，上述的背景颜色均可接收渐变色
 
-## 作者注
-
-> 本人前端小白一枚，工作经验较少，所写东西尽量保证没 bug，但性能界面什么的可能没办法做到最优，如果您有什么使用中的建议或意见，欢迎反馈给我，可以加联系方式，也可以直接回复，或者到`GitHub`提个`issur`[建议此方法]，如果对您有所帮助，万分期待您能给个赞并且到`GitHub`给个小星星，您的支持是我前进的最大动力，如果能到最下面打赏一下，祝你一生平安，永不脱发
-
-> GitHub 链接：[https://github.com/heyongsheng/vgvue-img-preview](https://github.com/heyongsheng/vgvue-img-preview)
-
-> 码云链接：[https://gitee.com/ihope_top/vgvue-img-preview](https://gitee.com/ihope_top/vgvue-img-preview)
-
-作者 QQ：1378431028
-
-QQ 群：595472617
-
-作者微信：heyongsheng1996
-![](https://user-gold-cdn.xitu.io/2020/4/27/171b950ccc0a1695?w=541&h=721&f=png&s=133763)
