@@ -20,8 +20,7 @@
     "vue-img",
     "vue-img-view",
     "img-view",
-    "view-preview",
-    "hevue"
+    "view-preview"
   ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
