@@ -32,6 +32,8 @@ const Toast = (options = {}) => {
   instance.nowImgIndex = options.nowImgIndex
   instance.imgList = options.imgList
   instance.keyboard = options.keyboard || false
+  instance.closable = options.closable || false
+  instance.maskClosable = options.maskClosable === void(0) ? true : options.maskClosable
   instance.show = true
   instance.instance = instance
 

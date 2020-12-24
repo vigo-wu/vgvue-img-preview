@@ -1,9 +1,3 @@
-/*
- * @Author: heyongsheng
- * @Date: 2020-04-22 15:40:32
- * @Last Modified by: heyongsheng
- * @Last Modified time: 2020-07-08 23:19:22
- */
 <template>
   <transition name="fade">
     <div
@@ -11,13 +5,15 @@
       id="vgvue-wrap"
       v-if="show"
       ref="heImg"
+      @click="maskClose"
       @mouseup="removeMove"
       :style="'background:' + mainBackground"
     >
       <div class="vg-img-wrap">
-        <img src="./loading.gif" v-show="imgState === 1" />
-        <!-- <div class="iconfont loading">&#xe6b1;</div> -->
+<!--        <img src="./loading.gif" v-show="imgState === 1" />-->
+         <div class="iconfont loading loading-animate" v-show="imgState === 1">&#xe6b1;</div>
         <img
+          @click="emptyEvent"
           :src="imgurl"
           ref="heImView"
           v-show="imgState === 2"
@@ -26,20 +22,27 @@
           @mousedown="addMove"
         />
         <div class="iconfont hevue-img-error" v-show="imgState === 3">&#xec0d;</div>
-        <div class="iconfont vg-close-icon" @click="close" :style="'color:'+closeColor">&#xe764;</div>
+        <div
+            v-if="closable ? closable : maskClosable ? false : true"
+            class="iconfont vg-close-icon"
+            @click.stop="close"
+            :style="'color:'+closeColor">
+          &#xe764;
+        </div>
         <div
           class="arrow arrow-left iconfont"
-          @click="toogleImg(false)"
+          @click.stop="toogleImg(false)"
           v-if="multiple"
           :style="'color:' + controlColor + ';background: '+controlBackground"
         >&#xe620;</div>
         <div
           class="arrow arrow-right iconfont"
-          @click="toogleImg(true)"
+          @click.stop="toogleImg(true)"
           v-if="multiple"
           :style="'color:' + controlColor + ';background: '+controlBackground"
         >&#xe60d;</div>
         <div
+          @click="emptyEvent"
           class="vg-control-bar"
           :style="'color:' + controlColor + ';background: '+controlBackground"
         >
@@ -51,6 +54,7 @@
           <div class="vg-control-btn iconfont" @click="rotateFunc(90)">&#xe66f;</div>
         </div>
         <div
+          @click="emptyEvent"
           class="vg-control-num"
           v-if="multiple"
           :style="'color:' + controlColor + ';background: '+controlBackground"
@@ -81,6 +85,14 @@ export default {
     keyboard: {
       type: Boolean,
       default: false,
+    },
+    closable: {
+      type: Boolean,
+      default: false,
+    },
+    maskClosable: {
+      type: Boolean,
+      default: true,
     },
     nowImgIndex: {
       type: Number,
@@ -316,6 +328,16 @@ export default {
         default:
           break
       }
+    },
+    
+    // 阻止事件冒泡
+    emptyEvent (e) {
+      e.stopPropagation()
+    },
+  
+    // 遮罩层点击关闭弹框
+    maskClose () {
+      this.maskClosable && this.close()
     }
   }
 }
@@ -427,5 +449,18 @@ export default {
 .hevue-img-error {
   font-size: 56px;
   color: #ccc;
+}
+
+.loading-animate {
+  font-size: 40px;
+  animation: loadingAni 1s linear infinite;
+}
+
+@keyframes loadingAni{
+  0%{-webkit-transform:rotate(0deg);}
+  25%{-webkit-transform:rotate(90deg);}
+  50%{-webkit-transform:rotate(180deg);}
+  75%{-webkit-transform:rotate(270deg);}
+  100%{-webkit-transform:rotate(360deg);}
 }
 </style>
